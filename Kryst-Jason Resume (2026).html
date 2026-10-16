@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Kryst — Resume</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Calibri', Arial, sans-serif;
+            font-size: 10.5pt;
+            color: #1c1c1c;
+            background: #ffffff;
+            max-width: 8.5in;
+            margin: 0 auto;
+            line-height: 1.45;
+        }
+
+        /* ── HEADER ──────────────────────────────────────────────── */
+        .header {
+            background: #192340;
+            color: #ffffff;
+            padding: 30px 52px 26px;
+        }
+        .header-name {
+            font-size: 30pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        .header-tagline {
+            font-size: 10.5pt;
+            color: #7ecfe0;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .header-contact {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            font-size: 9.5pt;
+            color: #b8cfe0;
+        }
+
+        /* ── CONTENT ─────────────────────────────────────────────── */
+        .content {
+            padding: 26px 52px 40px;
+        }
+
+        /* ── SECTIONS ────────────────────────────────────────────── */
+        .section {
+            margin-bottom: 22px;
+        }
+        .section-title {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #192340;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            border-bottom: 2px solid #2a85a0;
+            padding-bottom: 5px;
+            margin-bottom: 14px;
+        }
+
+        /* ── SUMMARY ──────────────────────────────────────────────── */
+        .summary p {
+            font-size: 10.5pt;
+            color: #2e2e2e;
+            line-height: 1.6;
+        }
+
+        /* ── CORE COMPETENCIES ───────────────────────────────────── */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px 12px;
+            list-style: none;
+        }
+        .competencies-grid li {
+            font-size: 9.5pt;
+            color: #192340;
+            padding-left: 13px;
+            position: relative;
+            line-height: 1.4;
+        }
+        .competencies-grid li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #2a85a0;
+            font-size: 9pt;
+        }
+
+        /* ── JOB ENTRIES ─────────────────────────────────────────── */
+        .job {
+            margin-bottom: 20px;
+        }
+        .job:last-child { margin-bottom: 0; }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 7px;
+        }
+        .job-role {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #192340;
+        }
+        .job-org {
+            font-size: 10.5pt;
+            color: #2a85a0;
+            font-weight: 600;
+        }
+        .job-date {
+            font-size: 9.5pt;
+            color: #666;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .job-bullets {
+            list-style: none;
+            padding: 0;
+        }
+        .job-bullets li {
+            position: relative;
+            padding: 2.5px 0 2.5px 15px;
+            font-size: 10pt;
+            color: #2e2e2e;
+            line-height: 1.5;
+        }
+        .job-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #2a85a0;
+            font-weight: 700;
+        }
+
+        /* ── EDUCATION ───────────────────────────────────────────── */
+        .edu-entry {
+            margin-bottom: 12px;
+        }
+        .edu-entry:last-child { margin-bottom: 0; }
+        .edu-school {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #192340;
+        }
+        .edu-location {
+            font-size: 9.5pt;
+            color: #666;
+        }
+        .edu-degree {
+            font-size: 10pt;
+            color: #2e2e2e;
+        }
+        .edu-note {
+            font-size: 9.5pt;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ── SKILLS ──────────────────────────────────────────────── */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .skills-table tr td {
+            padding: 3.5px 0;
+            font-size: 10pt;
+            vertical-align: top;
+        }
+        .skills-table .skill-label {
+            font-weight: 600;
+            font-style: italic;
+            color: #192340;
+            width: 175px;
+            padding-right: 12px;
+        }
+        .skills-table .skill-value {
+            color: #2e2e2e;
+        }
+
+        /* ── CERTIFICATIONS ──────────────────────────────────────── */
+        .cert-list {
+            list-style: none;
+            padding: 0;
+        }
+        .cert-list li {
+            position: relative;
+            padding: 2.5px 0 2.5px 15px;
+            font-size: 10pt;
+            color: #2e2e2e;
+        }
+        .cert-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #2a85a0;
+            font-weight: 700;
+        }
+
+        /* ── EARLY CAREER ───────────────────────────────────────── */
+        .early-section-label {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #666;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .early-entry {
+            margin-bottom: 10px;
+        }
+        .early-entry:last-child { margin-bottom: 0; }
+        .early-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 2px;
+        }
+        .early-role {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #192340;
+        }
+        .early-org {
+            font-size: 10pt;
+            color: #2a85a0;
+            font-weight: 500;
+        }
+        .early-date {
+            font-size: 9.5pt;
+            color: #666;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .early-desc {
+            font-size: 9.5pt;
+            color: #2e2e2e;
+            line-height: 1.5;
+        }
+
+        /* ── CERT IN PROGRESS ────────────────────────────────────── */
+        .cert-inprogress-label {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #666;
+            font-style: italic;
+            margin: 8px 0 4px 0;
+        }
+
+        /* ── PRINT ───────────────────────────────────────────────── */
+        @media print {
+            @page { size: letter; margin: 0; }
+            body { max-width: none; }
+            .header { padding: 24px 44px 20px; }
+            .content { padding: 20px 44px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-name">Jason Kryst</div>
+        <div class="header-tagline">Software Engineering Leader</div>
+        <div class="header-contact">
+            <span>Yorkville, IL</span>
+            <span>815-997-4015</span>
+            <span>jasonkryst@gmail.com</span>
+            <span><a href="https://www.linkedin.com/in/jasonkryst/" style="color:#b8cfe0;text-decoration:none;">linkedin.com/in/jasonkryst</a></span>
+            <span><a href="https://github.com/jasonkryst" style="color:#b8cfe0;text-decoration:none;">github.com/jasonkryst</a></span>
+        </div>
+    </header>
+
+    <div class="content">
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <section class="section">
+            <div class="section-title">Professional Summary</div>
+            <div class="summary">
+                <p>Technology leader with 15+ years of experience architecting cloud solutions and managing distributed engineering teams at Fortune 500 scale. Translates business strategy into scalable Azure architectures, drives engineering excellence through data-informed practices, and builds high-performing engineering organizations. Brings hands-on architectural depth combined with people-focused leadership — equally effective communicating with engineers, product teams, and executive stakeholders.</p>
+            </div>
+        </section>
+
+        <!-- CORE COMPETENCIES -->
+        <section class="section">
+            <div class="section-title">Core Competencies</div>
+            <ul class="competencies-grid">
+                <li>Cloud Solution Architecture (Azure)</li>
+                <li>Engineering Team Leadership</li>
+                <li>Technical Strategy &amp; Roadmaps</li>
+                <li>Distributed &amp; Offshore Team Management</li>
+                <li>System Design &amp; OOAD</li>
+                <li>Agile / SCRUM Delivery</li>
+                <li>AI-Augmented Development &amp; Tooling</li>
+                <li>Microservices Architecture</li>
+                <li>Performance Coaching &amp; Career Development</li>
+                <li>Knowledge Management Architecture</li>
+                <li>Stakeholder &amp; Executive Communication</li>
+                <li>Budget &amp; Compensation Planning</li>
+            </ul>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <section class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <!-- Ecolab -->
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Lead Software Engineer <span style="font-weight:400;font-size:10pt;color:#2a85a0;">(Technical Lead | Direct Reports)</span></div>
+                        <div class="job-org">Ecolab, Naperville, Illinois</div>
+                    </div>
+                    <div class="job-date">10/2021 - Present</div>
+                </div>
+                <ul class="job-bullets">
+                    <li>Lead 1–2 offshore engineering teams of ~10 engineers on a rotating annual basis — accountable for sprint facilitation, cross-team dependency management, 1:1s, performance reviews, compensation planning, and career pathing; leads cycle across teams each year to develop cross-domain technical breadth across Ecolab's enterprise portfolio.</li>
+                    <li>Define and govern cloud solution architecture on Microsoft Azure, integrating REST APIs, Azure Service Bus, and microservices patterns with Azure Functions and Web Apps as the primary ingress/egress layer across Ecolab's global enterprise portfolio.</li>
+                    <li>Executed a 2025 engineering excellence initiative producing a <strong>5% velocity increase</strong>, <strong>41% defect reduction</strong>, and <strong>29% improvement in sprint continuity</strong> — achieved through data-informed coaching, engineering metrics frameworks, and agile process redesign across teams.</li>
+                    <li>Architected and launched an enterprise documentation platform (DocFX) adopted by <strong>745+ internal users</strong> in 2025; established documentation-as-code standards and led the cross-functional team governing content strategy and ongoing maintenance.</li>
+                </ul>
+            </div>
+
+            <!-- Farm Market iD -->
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Lead Application Developer</div>
+                        <div class="job-org">Farm Market iD, Westmont, Illinois</div>
+                    </div>
+                    <div class="job-date">11/2018 - 10/2021</div>
+                </div>
+                <ul class="job-bullets">
+                    <li>Served as sole developer responsible for all development, testing, and deployment across multi-industry SaaS platforms serving agricultural, insurance, and marketing sectors — applications containing data on over <strong>2.4 million operators</strong> and insights across <strong>900 million acres</strong> of U.S. farmland; collaborated directly with leadership to translate product priorities into shipped features.</li>
+                    <li>Designed and operationalized a formal CI/CD release management process from the ground up, improving deployment reliability, reducing production risk, and establishing repeatable go-live procedures across the engineering team.</li>
+                    <li>Authored internal IT governance policies covering software lifecycle, hardware procurement, and user access management — establishing foundational operational standards for a growing technology organization.</li>
+                </ul>
+            </div>
+
+            <!-- USF Adjunct -->
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Adjunct Professor</div>
+                        <div class="job-org">University of St. Francis, Joliet, Illinois</div>
+                    </div>
+                    <div class="job-date">01/2021 - Present</div>
+                </div>
+                <ul class="job-bullets">
+                    <li>Over five years, designed and delivered curriculum for Computer Science and Communication &amp; Media Arts courses, developing hands-on, industry-aligned coursework that bridges academic theory with real-world engineering practice.</li>
+                    <li>Recognized for instructional excellence: rated <strong>4.7/5.0</strong> for overall teaching effectiveness (exceeding department and school averages) and <strong>5.0/5.0</strong> for learner respect.</li>
+                </ul>
+            </div>
+
+            <!-- Hands On Technology -->
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Software Developer</div>
+                        <div class="job-org">Hands On Technology, Inc., Westmont, Illinois</div>
+                    </div>
+                    <div class="job-date">05/2016 - 11/2018</div>
+                </div>
+                <ul class="job-bullets">
+                    <li>Developed and enhanced desktop electronic medical record (EMR) software, collaborating with cross-functional clinical and technical teams to prioritize changes with the highest patient impact.</li>
+                    <li>Served as Level 2 technical escalation resource for the support organization, resolving complex system issues and contributing root cause analysis to long-term product stability.</li>
+                </ul>
+            </div>
+
+            <!-- Early Career -->
+            <div class="job">
+                <div class="early-section-label">Earlier Experience</div>
+                <div class="early-entry">
+                    <div class="early-entry-header">
+                        <div><span class="early-role">Revenue Cycle Programmer Analyst</span> &nbsp;<span class="early-org">Presence Health, Bolingbrook, IL</span></div>
+                        <div class="early-date">03/2015 - 04/2016</div>
+                    </div>
+                    <div class="early-desc">Designed and maintained custom applications for healthcare revenue cycle operations; established knowledge-sharing programs and introduced technology-driven process improvements.</div>
+                </div>
+                <div class="early-entry">
+                    <div class="early-entry-header">
+                        <div><span class="early-role">Web Developer</span> &nbsp;<span class="early-org">Anttix, Shorewood, IL</span></div>
+                        <div class="early-date">05/2011 - 03/2015</div>
+                    </div>
+                    <div class="early-desc">Engineered interactive web solutions for a diverse client portfolio using Drupal and CMS frameworks; managed client relationships, project delivery, and ongoing performance optimization.</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="section">
+            <div class="section-title">Skills</div>
+            <table class="skills-table">
+                <tr>
+                    <td class="skill-label">Leadership &amp; Strategy</td>
+                    <td class="skill-value">Engineering Team Management, Strategic Planning, Change Management, Budgeting, Talent Development, Stakeholder Management</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Architecture &amp; Design</td>
+                    <td class="skill-value">Cloud Solution Architecture, Microservices, System Design, OOAD, Data Modeling, Database Design, API Design</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Cloud &amp; DevOps</td>
+                    <td class="skill-value">Microsoft Azure, Azure Functions, Azure Service Bus, Azure DevOps, Azure OpenAI, CI/CD Pipelines, GitHub Copilot, Claude Code</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Languages</td>
+                    <td class="skill-value">C#, SQL/T-SQL, JavaScript</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Tools &amp; Platforms</td>
+                    <td class="skill-value">Visual Studio, VS Code, DocFX, Git</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Methodologies</td>
+                    <td class="skill-value">Agile, SCRUM, Kanban</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section">
+            <div class="section-title">Education</div>
+
+            <div class="edu-entry">
+                <span class="edu-school">North Central College</span>
+                <span class="edu-location">, Naperville, Illinois</span>
+                <div class="edu-degree">Master of Science in Management Information Systems, 2016</div>
+            </div>
+
+            <div class="edu-entry">
+                <span class="edu-school">University of St. Francis</span>
+                <span class="edu-location">, Joliet, Illinois</span>
+                <div class="edu-degree">Bachelor of Science in Web Applications Development, 2012</div>
+                <div class="edu-note">Magna cum laude | Member, Delta Epsilon Sigma</div>
+            </div>
+
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="section">
+            <div class="section-title">Certifications</div>
+            <ul class="cert-list">
+                <li>Microsoft GitHub Copilot | Issued 09/2025, Expires 09/2027</li>
+                <li>Microsoft Certified: Azure Fundamentals (AZ-900) | Issued 08/2023</li>
+            </ul>
+            <div class="cert-inprogress-label">In Progress</div>
+            <ul class="cert-list">
+                <li>Microsoft Certified: Azure Developer Associate (AZ-204) | Expected 2026</li>
+            </ul>
+        </section>
+
+    </div><!-- /content -->
+</body>
+</html>
